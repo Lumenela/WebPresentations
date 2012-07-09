@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebPresentations.Models.Presentation>
+@{
+    ViewBag.Title = "Index";
+}
+<h2 style="color: #d14;">This page will be DELETED</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Json
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Tags
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Json)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @foreach (var tag in item.Tags)
+                    {
+                        @tag.Text <b> </b>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PresentationId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PresentationId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PresentationId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
