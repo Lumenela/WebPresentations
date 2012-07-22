@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ###*
 * @module common.collections
 * @author Matt Crinklaw-Vogt
@@ -7,6 +8,12 @@ define(() ->
 	* Provides a linked list implementation
 	* @class common.collections.LinkedList
 	*###
+=======
+###
+@author Matt Crinklaw-Vogt
+###
+define(() ->
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 	class LinkedList
 		constructor: () ->
 			@head = @tail = null

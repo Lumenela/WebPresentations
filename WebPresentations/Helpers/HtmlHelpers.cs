@@ -50,11 +50,18 @@ namespace WebPresentations.Helpers
                 foreach (var tag in tags)
                 {
                     output.AppendFormat(@"<div class=""tag{0}"">",
+<<<<<<< HEAD
                                         GetTagRank(tag, tags.Count()));
                     output.Append(tag.Tag);
                     output.Append("</div>");
                 }
 
+=======
+                        GetTagRank(tag, tags.Count()));
+                    output.Append(tag.Tag);
+                    output.Append("</div>");
+                }
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
             }
             output.Append("</div>");
             return output.ToString();

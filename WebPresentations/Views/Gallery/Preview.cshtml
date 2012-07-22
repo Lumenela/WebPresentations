@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@model WebPresentations.Models.Presentation
 @{
     Layout = null;
@@ -40,3 +41,20 @@
         impress().init();
     });
 </script>
+=======
+﻿@{
+    ViewBag.Title = "Preview";
+}
+<h2>Presentation preview</h2>
+<div class="container-fluid">
+    <div class="span4">
+        <h2>@ViewBag.PresentationTitle</h2>
+        <p>Description: @ViewBag.Description</p>
+        Tags:
+        @foreach (var tag in ViewBag.Tags)
+        {
+            @tag.Text<em></em>
+        }
+    </div>
+</div>
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde

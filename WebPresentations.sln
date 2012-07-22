@@ -16,6 +16,7 @@ Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = WebPresentations.vsmdi
 	EndGlobalSection
+Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

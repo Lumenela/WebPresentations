@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 define(["vendor/amd/backbone"],
+=======
+define(["vendor/backbone"],
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 function(Backbone) {
 	function isModelish(obj) {
 		return obj instanceof Backbone.Model ||

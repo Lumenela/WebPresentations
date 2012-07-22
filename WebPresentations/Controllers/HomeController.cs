@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+<<<<<<< HEAD
 using System.Web.Script.Serialization;
 using WebPresentations.TagCloud;
 using WebPresentations.Models;
+=======
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 
 namespace WebPresentations.Controllers
 {
@@ -21,6 +24,7 @@ namespace WebPresentations.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
 
         [HttpGet]
         public string GetTags()
@@ -29,5 +33,7 @@ namespace WebPresentations.Controllers
             var javaScriptSerializer = new JavaScriptSerializer();
             return javaScriptSerializer.Serialize(cloud.Cloud);
         }
+=======
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
     }
 }

@@ -15,6 +15,7 @@ namespace WebPresentations.Models
             Count = 1;
             Presentations = new HashSet<Presentation>();
         }
+<<<<<<< HEAD
 
         public Tag(string text)
         {
@@ -22,5 +23,7 @@ namespace WebPresentations.Models
             Count = 0;
             Presentations = new HashSet<Presentation>();
         }
+=======
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
     }
 }

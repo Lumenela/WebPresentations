@@ -1,18 +1,31 @@
 ﻿@model WebPresentations.Models.LogOnModel
 
 @{
+<<<<<<< HEAD
     ViewBag.Title = @ViewRes.SharedLayoutStrings.LogOn;
 }
 
 <h2>@ViewRes.SharedLayoutStrings.LogOn</h2>
 <p>
     @ViewRes.SharedLayoutStrings.EnterYourNameAndPassword @Html.ActionLink(@ViewRes.SharedLayoutStrings.Register, "Register") @ViewRes.SharedLayoutStrings.IfNotRegistered.
+=======
+    ViewBag.Title = "Log On";
+}
+
+<h2>Log On</h2>
+<p>
+    Please enter your user name and password. @Html.ActionLink("Register", "Register") if you don't have an account.
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 </p>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
+<<<<<<< HEAD
 @Html.ValidationSummary(true, @ViewRes.SharedLayoutStrings.LoginFailed)
+=======
+@Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 
 @using (Html.BeginForm()) {
     <div>
@@ -41,7 +54,11 @@
             </div>
 
             <p>
+<<<<<<< HEAD
                 <input type="submit" value=@ViewRes.SharedLayoutStrings.LogOn />
+=======
+                <input type="submit" value="Log On" />
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
             </p>
         </fieldset>
     </div>

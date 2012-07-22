@@ -3,6 +3,7 @@
         @if (Model.HasPreviousPage)
         {
             <li class="prev"><a href="@Url.Action(ViewBag.RedirectRoute, new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">
+<<<<<<< HEAD
                 &larr; @ViewRes.SharedLayoutStrings.Previous</a></li>
         }
         else
@@ -20,15 +21,34 @@
                 <li>@Html.ActionLink(i.ToString(), "Index", new { page = i, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })</li>
             }
 
+=======
+                &larr; Previous</a></li>
+        }
+        else
+        {
+            <li class="disabled"><a>&larr; Previous</a></li>
+        }
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            @Html.ActionLink(i.ToString(), "Index", new { page = i, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
         }
         @if (Model.HasNextPage)
         {
             <li class="next"><a href="@Url.Action(ViewBag.RedirectRoute, new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">
+<<<<<<< HEAD
                 @ViewRes.SharedLayoutStrings.Next &rarr;</a></li>
         }
         else
         {
             <li class="disabled"><a>@ViewRes.SharedLayoutStrings.Next &rarr;</a></li>
+=======
+                Next &rarr;</a></li>
+        }
+        else
+        {
+            <li class="disabled"><a>Next &rarr;</a></li>
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
         }
     </ul>
 </div>

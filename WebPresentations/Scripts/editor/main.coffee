@@ -6,9 +6,15 @@ requirejs.config(
 		"css": "vendor/amd_plugins/css"
 		"text": "vendor/amd_plugins/text"
 	shim: 
+<<<<<<< HEAD
 		'vendor/amd/jszip': 
 			exports: 'JSZip'
 		'vendor/amd/jszip-deflate': ['vendor/amd/jszip']
+=======
+		'vendor/jszip': 
+			exports: 'JSZip'
+		'vendor/jszip-deflate': ['vendor/jszip']
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 )
 
 window.browserPrefix = ""
@@ -61,7 +67,11 @@ else
 				deck.newSlide()
 		)
 	
+<<<<<<< HEAD
 	requirejs(["vendor/amd/backbone",
+=======
+	requirejs(["vendor/backbone",
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 			"state/DefaultState"],
 	(Backbone, DefaultState) ->
 		Backbone.sync = (method, model, options) ->

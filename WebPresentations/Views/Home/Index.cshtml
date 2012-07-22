@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@*@using WebPresentations.Helpers*@
 @{
     ViewBag.Title = "Web Presentations";
@@ -41,3 +42,17 @@
       <hr>
 
 </div> <!-- /container -->
+=======
+﻿@using WebPresentations.Helpers
+@{
+    ViewBag.Title = "Home Page";
+}
+<link href="@Url.Content("~/Content/tagcloud.css")" rel="stylesheet">
+<h2>@ViewBag.Message</h2>
+<p>
+    Home page
+</p>
+<h6>Tag colud:</h6>
+<p>@Html.Raw(Html.TagCloud())</p>
+
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde

@@ -1,4 +1,5 @@
 ﻿using System;
+<<<<<<< HEAD
 using System.Globalization;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
@@ -6,10 +7,23 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebPresentations.MembershipLayer;
+=======
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
+using System.Web;
+using System.Configuration;
+using System.Web.Mvc;
+using System.Web.Handlers;
+using System.Web.Routing;
+using System.Web.Security;
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 using WebPresentations.Models;
 
 namespace WebPresentations.Controllers
 {
+<<<<<<< HEAD
     //[HandleErrorWithELMAH]
     public class AccountController : Controller
     {
@@ -48,14 +62,37 @@ namespace WebPresentations.Controllers
         [HttpPost]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1054:UriParametersShouldNotBeStrings",
             Justification = "Needs to take same parameter type as Controller.Redirect()")]
+=======
+    public class AccountController : Controller
+    {
+
+        //
+        // GET: /Account/LogOn
+
+        public ActionResult LogOn()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/LogOn
+
+        [HttpPost]
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
+<<<<<<< HEAD
                 if (ValidateLogOn(model.UserName, model.Password))
                 {
                     string userName = MembershipService.GetCanonicalUsername(model.UserName);
                     FormsAuth.SignIn(userName, model.RememberMe);
+=======
+                if (Membership.ValidateUser(model.UserName, model.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
                     {
@@ -71,6 +108,7 @@ namespace WebPresentations.Controllers
                     ModelState.AddModelError("", "The user name or password provided is incorrect.");
                 }
             }
+<<<<<<< HEAD
             return View(model);
         }
 
@@ -78,21 +116,48 @@ namespace WebPresentations.Controllers
         {
 
             FormsAuth.SignOut();
+=======
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        //
+        // GET: /Account/LogOff
+
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 
             return RedirectToAction("Index", "Home");
         }
 
+<<<<<<< HEAD
         public ActionResult Register()
         {
             ViewBag.PasswordLength = MembershipService.MinPasswordLength;
             return View();
         }
 
+=======
+        //
+        // GET: /Account/Register
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/Register
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
+<<<<<<< HEAD
                 ViewBag.PasswordLength = MembershipService.MinPasswordLength;
 
                 if (ValidateRegistration(model.UserName, model.Email, model.Password, model.ConfirmPassword))
@@ -124,6 +189,27 @@ namespace WebPresentations.Controllers
         }
 
 
+=======
+                // Attempt to register the user
+                MembershipCreateStatus createStatus;
+                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, false, null, out createStatus);
+                if (createStatus == MembershipCreateStatus.Success)
+                {
+                    // TODO: SendConfrimationEmail() might fail, try-catch here!
+                    SendConfrimationEmail(model.UserName);
+                    return RedirectToAction("Confirmation", "Account");
+                }
+                else
+                {
+                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
         //
         // GET: /Account/Confirmation
 
@@ -151,11 +237,19 @@ namespace WebPresentations.Controllers
                     user.IsApproved = true;
                     Membership.UpdateUser(user);
                     FormsAuthentication.SetAuthCookie(user.UserName, false /* createPersistentCookie */);
+<<<<<<< HEAD
+=======
+                    //FormsService.SignIn(user.UserName, false);
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
                     return RedirectToAction("RegistrationSuccess");
                 }
                 else
                 {
                     FormsAuthentication.SignOut();
+<<<<<<< HEAD
+=======
+                    //FormsService.SignOut();
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
                     TempData["errorMessage"] = "You have already confirmed your email address.";
                     return RedirectToAction("LogOn");
                 }
@@ -170,6 +264,7 @@ namespace WebPresentations.Controllers
             return View();
         }
 
+<<<<<<< HEAD
         [Authorize]
         public ActionResult ChangePassword()
         {
@@ -292,14 +387,98 @@ namespace WebPresentations.Controllers
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
             // See http://msdn.microsoft.com/en-us/library/system.web.security.membershipcreatestatus.aspx for
+=======
+        //
+        // GET: /Account/ChangePassword
+
+        [Authorize]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/ChangePassword
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                // ChangePassword will throw an exception rather
+                // than return false in certain failure scenarios.
+                bool changePasswordSucceeded;
+                try
+                {
+                    MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
+                    changePasswordSucceeded = currentUser.ChangePassword(model.OldPassword, model.NewPassword);
+                }
+                catch (Exception)
+                {
+                    changePasswordSucceeded = false;
+                }
+
+                if (changePasswordSucceeded)
+                {
+                    return RedirectToAction("ChangePasswordSuccess");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        //
+        // GET: /Account/ChangePasswordSuccess
+
+        public ActionResult ChangePasswordSuccess()
+        {
+            return View();
+        }
+
+        //Send confrimation Email
+        private void SendConfrimationEmail(string userName)
+        {
+            MembershipUser user = Membership.GetUser(userName);
+            string confirmationGuid = user.ProviderUserKey.ToString();
+            string confirmUrl = System.Web.HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
+                             "/account/confirm?id=" + confirmationGuid;
+            // TODO: change confirmation email body
+            var message = new MailMessage("iliketits.spambot@yahoo.com", user.Email)
+            {
+                Subject = "Registration confirmation from iLikeTits.com",
+                Body = "Please follow the link below in order to activate your account:\n" + confirmUrl
+            };
+            var client = new SmtpClient();
+            client.Send(message);
+        }
+
+        #region Status Codes
+        private static string ErrorCodeToString(MembershipCreateStatus createStatus)
+        {
+            // See http://go.microsoft.com/fwlink/?LinkID=177550 for
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
             // a full list of status codes.
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
+<<<<<<< HEAD
                     return "Username already exists. Please enter a different user name.";
 
                 case MembershipCreateStatus.DuplicateEmail:
                     return "A username for that e-mail address already exists. Please enter a different e-mail address.";
+=======
+                    return "User name already exists. Please enter a different user name.";
+
+                case MembershipCreateStatus.DuplicateEmail:
+                    return "A user name for that e-mail address already exists. Please enter a different e-mail address.";
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 
                 case MembershipCreateStatus.InvalidPassword:
                     return "The password provided is invalid. Please enter a valid password value.";
@@ -327,5 +506,9 @@ namespace WebPresentations.Controllers
             }
         }
         #endregion
+<<<<<<< HEAD
+=======
+
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
     }
 }

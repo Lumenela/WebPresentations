@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+<<<<<<< HEAD
 using System.Net.Mail;
+=======
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 using System.Web.Mvc;
 using System.Web.Security;
 

@@ -74,6 +74,10 @@
 	-webkit-transform-origin: 0 0;
 	-moz-transform-origin: 0 0;
 	margin: 10px auto;
+<<<<<<< HEAD
+=======
+	overflow: hidden;
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 	-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);

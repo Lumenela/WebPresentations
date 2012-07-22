@@ -1,5 +1,6 @@
 #WebPresentations
 
+<<<<<<< HEAD
 A project in ASP.NET MVC3 for online presentations management
 
 ## Packages
@@ -30,3 +31,6 @@ http://visualstudiogallery.msdn.microsoft.com/0e313dfd-be80-4afb-b5e9-6e74d369f7
 
 * **ADO.NET Entity Framework 4.1**
 http://www.microsoft.com/en-us/download/details.aspx?id=8363
+=======
+A project in ASP.NET MVC3 for online presentations management
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde

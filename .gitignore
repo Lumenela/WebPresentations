@@ -44,9 +44,13 @@ local.properties
 # Build results
 [Dd]ebug/
 [Rr]elease/
+<<<<<<< HEAD
 obj/
 _ReSharper.WebPresentations/
 TestResults/
+=======
+_ReSharper.WebPresentations
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 *_i.c
 *_p.c
 *.ilk

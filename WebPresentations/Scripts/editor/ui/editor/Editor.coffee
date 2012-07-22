@@ -50,9 +50,12 @@ FileStorage, BackgroundPicker, AutoSaver, Archiver, empty) ->
 				FileStorage.save(fileName, @model.toJSON(false, true))
 
 		saveAs: (e) ->
+<<<<<<< HEAD
 			json = escape(JSON.stringify(ImpressRenderer.render(this.model.attributes)))
 			localStorage.setItem("htmlContents", json)
 			localStorage.setItem("jsonString", escape(JSON.stringify(@model.toJSON(false, true))))
+=======
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 			@saveAsDialog.show((fileName) =>
 				if fileName? and fileName isnt ""
 					console.log "Attempting to save #{fileName}"
@@ -88,7 +91,10 @@ FileStorage, BackgroundPicker, AutoSaver, Archiver, empty) ->
 			@$el.trigger("preview")
 		exportJSON: (e) ->
 			@rawTextModal.show(null, JSON.stringify(@model.toJSON(false, true)))
+<<<<<<< HEAD
 			#@rawTextModal.show(null,json = escape(JSON.stringify(ImpressRenderer.render(this.model.attributes))))
+=======
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 
 		importJSON: (e) ->
 			@rawTextModal.show((json) =>
@@ -142,6 +148,7 @@ FileStorage, BackgroundPicker, AutoSaver, Archiver, empty) ->
 				@$el.find(".redoName").addClass("disp-none")
 
 		renderPreview: () ->
+<<<<<<< HEAD
 			localStorage.setItem("jsonPreview",JSON.stringify(ImpressRenderer.render(this.model.attributes)))
 			window.location = "Preview"
 			#showStr = ImpressRenderer.render(@model.attributes)
@@ -160,6 +167,27 @@ FileStorage, BackgroundPicker, AutoSaver, Archiver, empty) ->
 			#
 			#$(window.previewWind.document).ready(cb)
 			#window.location = "index.html?preview=" + showStr;
+=======
+			showStr = ImpressRenderer.render(@model.attributes)
+			#newWind = window.open("data:text/html;charset=utf-8," + escape(showStr))
+
+			#encodeURIComponent(showStr)
+			window.previewWind = window.open("index.html?preview=true");
+			sourceWind = window;
+
+			cb = () ->
+					if (not sourceWind.previewWind.startImpress?)
+						setTimeout(cb, 200)
+					else
+						sourceWind.previewWind.document.getElementsByTagName("html")[0].innerHTML = showStr;
+						if not sourceWind.previewWind.impressStarted
+							sourceWind.previewWind.startImpress(sourceWind.previewWind.document, sourceWind.previewWind);
+							sourceWind.previewWind.impress().init();
+			
+			$(window.previewWind.document).ready(cb)
+			#window.location = "index.html?preview=" + showStr;
+
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 			#frame = newWind.document.getElementById("presentation")
 			#frame.src = "data:text/html;charset=utf-8," + escape(showStr)
 

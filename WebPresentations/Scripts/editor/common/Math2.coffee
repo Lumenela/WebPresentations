@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ###*
 * @module common
 * @author Matt Crinklaw
@@ -17,11 +18,15 @@ define(
 	* @param {Integer} [dec] Number of decimal places to keep.  Defaults to 0.
 	* @returns {Number} rounder number
 	*###
+=======
+define(
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 	round: (num, dec) ->
 		dec? or (dec = 0)
 		factor = Math.pow(10, dec)
 		Math.round(num * factor) / factor
 
+<<<<<<< HEAD
 	###*
 	* Converts radians to degrees
 	* @method toDeg
@@ -62,6 +67,19 @@ define(
 	*###
 	rotatePt: (pt, rot) ->
 		if rot < 0
+=======
+	toDeg: (rads) ->
+		rads * 180 / Math.PI
+
+	toRads: (deg) ->
+		deg * Math.PI / 180
+
+	compare: (v1, v2, thresh) ->
+		Math.abs(v1 - v2) < thresh
+
+	transformPt: (pt, rot) ->
+		if rot > 0
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 			newPt =
 				x: pt.x * Math.cos(rot) + pt.y * Math.sin(rot)
 				y: -1 * pt.x * Math.sin(rot) + pt.y * Math.cos(rot)
@@ -70,12 +88,17 @@ define(
 				x: pt.x * Math.cos(rot) - pt.y * Math.sin(rot)
 				y: pt.x * Math.sin(rot) + pt.y * Math.cos(rot)
 
+<<<<<<< HEAD
 	###*
 	* Same as rotatePt but expects left and top instead of x and y
 	* @method rotatePtE
 	*###
 	rotatePtE: (pt, rot) ->
 		if rot < 0
+=======
+	transformPtE: (pt, rot) ->
+		if rot > 0
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 			newPt =
 				left: pt.left * Math.cos(rot) + pt.top * Math.sin(rot)
 				top: -1 * pt.left * Math.sin(rot) + pt.top * Math.cos(rot)

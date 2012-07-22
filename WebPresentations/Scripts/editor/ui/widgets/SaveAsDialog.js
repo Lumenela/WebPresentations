@@ -6,7 +6,11 @@
 
 (function() {
 
+<<<<<<< HEAD
   define(["vendor/amd/backbone", "./Templates", "./OpenDialog"], function(Backbone, Templates, OpenDialog) {
+=======
+  define(["vendor/backbone", "./Templates", "./OpenDialog"], function(Backbone, Templates, OpenDialog) {
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
     return OpenDialog.extend({
       initialize: function() {
         return OpenDialog.prototype.initialize.apply(this, arguments);

@@ -1,6 +1,7 @@
 ﻿@if (Request.IsAuthenticated)
 {
     <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user">
+<<<<<<< HEAD
     </i>@User.Identity.Name <span class="caret"></span></a>
     <ul class="dropdown-menu">
         @if (User.IsInRole("Administrator"))
@@ -12,9 +13,21 @@
         <li><a href="@Url.Action("Index", "Profile")"><i class="icon-briefcase"></i> @ViewRes.SharedLayoutStrings.Profile</a></li>
         <li class="divider"></li>
         <li><a href="@Url.Action("LogOff", "Account")"><i class="icon-off"></i> @ViewRes.SharedLayoutStrings.LogOut</a></li>
+=======
+    </i>@User.Identity.Name
+        <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">Profile</a></li>
+        <li class="divider"></li>
+        <li>@Html.ActionLink("Log Off", "LogOff", "Account")</li>
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
     </ul>    
 }
 else
 {    
+<<<<<<< HEAD
     <a class="btn dropdown-toggle" href="@Url.Action("LogOn", "Account")"><i class="icon-lock"></i> @ViewRes.SharedLayoutStrings.LogOn</a>
+=======
+    <a class="btn dropdown-toggle" href="@Url.Action("LogOn", "Account")"> Log On</a>
+>>>>>>> 70019ad6cebd2e9b9c2853cba260c0dda4297cde
 }
