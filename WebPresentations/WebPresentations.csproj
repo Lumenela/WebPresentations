@@ -114,6 +114,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="DatabaseEntities\EntitiesIndexer.cs" />
+    <Compile Include="Resources\Views\SharedLayoutStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedLayoutStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Views\SharedLayoutStrings.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedLayoutStrings.ru.resx</DependentUpon>
+    </Compile>
     <Compile Include="SearchEngine\LuceneIndexer.cs" />
     <Compile Include="TagCloud\TagCloud.cs" />
     <Compile Include="ViewModels\AdministrativeToolViewModel.cs" />
@@ -138,6 +148,11 @@
     <Content Include="Content\editor\css\bootstrap.css" />
     <Content Include="Content\editor\css\close-btn.css" />
     <Content Include="Content\editor\css\main.css" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\checked.gif" />
+    <Content Include="Content\images\en.png" />
+    <Content Include="Content\images\ru.png" />
+    <Content Include="Content\images\unchecked.gif" />
     <Content Include="Content\mini-tag.css" />
     <Content Include="Content\preview\main.css" />
     <Content Include="Content\preview\web-fonts.css" />
@@ -522,6 +537,12 @@
     <None Include="Content\fonts\PressStart2P-Regular.woff" />
     <None Include="Content\fonts\Ubuntu-Bold.woff" />
     <None Include="Content\fonts\Ubuntu.woff" />
+    <Content Include="Content\sharedLayout.css">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -918,12 +939,23 @@
     <Content Include="Views\Profile\Settings.cshtml" />
     <Content Include="Views\Profile\Presentations.cshtml" />
     <Content Include="Views\Editor\Edit.cshtml" />
+    <Content Include="Views\Shared\CultureChooserPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\SharedLayoutStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedLayoutStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ViewRes</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Views\SharedLayoutStrings.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedLayoutStrings.ru.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ViewRes</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

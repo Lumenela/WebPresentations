@@ -21,6 +21,12 @@ namespace WebPresentations.Controllers
             MembershipService = service ?? new AccountMembershipService();
         }
 
+        public ActionResult ChangeCulture(string lang, string returnUrl)
+        {
+            Session["Culture"] = new CultureInfo(lang);
+            return Redirect(returnUrl);
+        }
+
         public IFormsAuthentication FormsAuth
         {
             get;
